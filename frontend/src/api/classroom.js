@@ -4,6 +4,10 @@ export function listClassrooms(params) {
   return request.get('/classrooms', { params })
 }
 
+export function getClassroomBoard(params) {
+  return request.get('/classrooms/board', { params })
+}
+
 export function createClassroom(data) {
   return request.post('/classrooms', data)
 }

@@ -11,6 +11,7 @@
         <el-menu-item index="/students"><el-icon><UserFilled /></el-icon><span>学员管理</span></el-menu-item>
         <el-menu-item index="/courses"><el-icon><Reading /></el-icon><span>课程管理</span></el-menu-item>
         <el-menu-item index="/classrooms"><el-icon><OfficeBuilding /></el-icon><span>教室管理</span></el-menu-item>
+        <el-menu-item index="/classroom-board"><el-icon><Grid /></el-icon><span>教室看板</span></el-menu-item>
         <el-menu-item index="/schedules"><el-icon><Calendar /></el-icon><span>排课管理</span></el-menu-item>
         <el-menu-item index="/enrollments"><el-icon><Tickets /></el-icon><span>报名管理</span></el-menu-item>
         <el-menu-item index="/lesson-records"><el-icon><Document /></el-icon><span>上课记录</span></el-menu-item>
@@ -48,6 +49,7 @@ const pageTitle = computed(() => {
     '/students': '学员管理',
     '/courses': '课程管理',
     '/classrooms': '教室管理',
+    '/classroom-board': '教室占用看板',
     '/schedules': '排课管理',
     '/enrollments': '报名管理',
     '/lesson-records': '上课记录',
