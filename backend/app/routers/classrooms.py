@@ -41,10 +41,10 @@ def delete_classroom(cid: int, db: Session = Depends(get_db), _=require_role("ad
     return {"message": "教室已删除"}
 
 @router.get("/board")
-def classroom_board(target_date: Optional[date] = None, db: Session = Depends(get_db), current_user=Depends(get_current_user)):
-    if target_date is None:
-        target_date = date.today()
-    weekday = target_date.weekday()
+def classroom_board(date: Optional[date] = None, db: Session = Depends(get_db), current_user=Depends(get_current_user)):
+    if date is None:
+        date = date.today()
+    weekday = date.weekday()
     
     classrooms = db.query(Classroom).order_by(Classroom.name).all()
     schedules = db.query(CourseSchedule)\
@@ -79,7 +79,7 @@ def classroom_board(target_date: Optional[date] = None, db: Session = Depends(ge
             occupied = False
             occupied_by = None
             for s in room_schedules:
-                if s.start_time <= slot["start"] and s.end_time >= slot["end"]:
+                if s.start_time < slot["end"] and s.end_time > slot["start"]:
                     occupied = True
                     occupied_by = {
                         "id": s.id,
