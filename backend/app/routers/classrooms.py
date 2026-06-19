@@ -50,8 +50,8 @@ def classroom_board(date: Optional[date] = None, db: Session = Depends(get_db), 
     schedules = db.query(CourseSchedule)\
         .filter(CourseSchedule.is_active == True)\
         .filter(CourseSchedule.weekday == weekday)\
-        .filter(CourseSchedule.start_date <= target_date)\
-        .filter((CourseSchedule.end_date == None) | (CourseSchedule.end_date >= target_date))\
+        .filter(CourseSchedule.start_date <= date)\
+        .filter((CourseSchedule.end_date == None) | (CourseSchedule.end_date >= date))\
         .order_by(CourseSchedule.classroom_id, CourseSchedule.start_time)\
         .all()
     
@@ -106,4 +106,4 @@ def classroom_board(date: Optional[date] = None, db: Session = Depends(get_db), 
             "slots": room_slots,
         })
     
-    return {"date": target_date, "weekday": weekday, "classrooms": result}
+    return {"date": date, "weekday": weekday, "classrooms": result}
